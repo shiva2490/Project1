@@ -1,0 +1,2 @@
+spring.application.name=springbootmvc-employee
+server.port = 1908

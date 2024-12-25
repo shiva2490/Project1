@@ -1,0 +1,25 @@
+package com.sathya.springmvc.employee.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.sathya.springmvc.employee.model.EmployeeModel;
+
+@Controller
+public class EmployeeController {
+	
+	@GetMapping("/employee")
+	public String getEmployeeDetails()
+	{
+		return "add-employee";
+	}
+	
+	@PostMapping("/save employee")
+	public String saveEmployee(EmployeeModel employeeModel)
+	{
+		System.out.println(employeeModel);
+		return "success";
+	}
+
+}

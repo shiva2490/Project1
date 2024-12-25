@@ -1,0 +1,12 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<div>
+			<a href="localhost:2490/productform">Add products</a>
+			<a href="localhost:2490/getproducts">Get All Products</a>
+			<a href="localhost:2490/productform">Add products</a>
+		</div>
+	</body>
+</html>

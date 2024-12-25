@@ -1,0 +1,37 @@
+package com.sathya.springmvc.employee.service;
+
+import org.springframework.stereotype.Service;
+
+import com.sathya.springmvc.employee.entity.EmployeeEntity;
+import com.sathya.springmvc.employee.model.EmployeeModel;
+
+@Service
+public class EmployeeService {
+
+	public void saveEmployeeDetails(EmployeeModel employeeModel) {
+		
+		int overTime = 10;
+		
+		double otPay = 2000;
+		
+		double otAmt ;
+		otAmt = overTime * otPay;
+		
+		double grossSalary;
+		grossSalary = employeeModel.getSalary() + otAmt;
+		
+		
+		EmployeeEntity employeeEntity = new EmployeeEntity();
+		
+		employeeEntity.setName(employeeModel.getName());
+		employeeEntity.setSalary(employeeModel.getSalary());
+		employeeEntity.setAge(employeeModel.getAge());
+		employeeEntity.setCompany(employeeModel.getCompany());
+		employeeEntity.setOverTime(overTime);
+		employeeEntity.setOtPay(otPay);
+		employeeEntity.setOtAmt(otAmt);
+		employeeEntity.setGrossSalary(grossSalary);
+		
+	}
+
+}

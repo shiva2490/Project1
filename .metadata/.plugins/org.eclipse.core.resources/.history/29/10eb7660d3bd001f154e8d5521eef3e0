@@ -1,0 +1,7 @@
+spring.application.name=springbootmvc-product
+server.port=1004
+
+spring.datasource.url=jdbc:h2:mem:testdb  # In-memory database; replace 'mem:testdb' with file path for persistent DB
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=shiva@123
