@@ -23,19 +23,22 @@ import jakarta.validation.Valid;
 public class ProductController {
 	
 	@Autowired
-	ProductService productService;
+	ProductService productService;   //injecting the ProductService object into ProductController class
 	
+	
+	//getting the html form to fill the detail by client
 	@GetMapping("/productform")
 	public String getProductForm(Model model)
 	{
 		ProductModel productModel = new ProductModel();
-		productModel.setMadeIn("India");
+		productModel.setMadeIn("India");      //setting the default field value to productform
 		productModel.setQuantity(2);
 		productModel.setDiscountRate(10.5);
-		model.addAttribute("productModel", productModel);
+		model.addAttribute("productModel", productModel);  //sending the "productModel" to view layer
 		return "add-products";
 	}
-
+	
+	//Form without default values and validations
 //	@PostMapping("/save product")
 //	
 //	public String saveProduct(ProductModel productModel)
@@ -45,8 +48,8 @@ public class ProductController {
 //	}
 	
 	
+	//Form with default values and validations
 	@PostMapping("/save product")
-	
 	public String saveProduct(@Valid ProductModel productModel , BindingResult bindingResult , Model model)
 	{
 		//used to store the fieldName : error message in the form of key : value
@@ -61,7 +64,6 @@ public class ProductController {
 				//putting the each field error into map
 				validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 			}
-			
 			//adding the validationErrors into model object to send to view
 			model.addAttribute("validationErrors", validationErrors);
 			return "add-products";
@@ -72,6 +74,9 @@ public class ProductController {
 	}
 	
 	
+	
+	
+	//displaying all the records in the database or displaying the entire table
 	@GetMapping("/getproducts")
 	public String getAllProducts(Model model)
 	{
@@ -81,6 +86,10 @@ public class ProductController {
 		return "product-list";
 	}
 	
+	
+	
+	
+	//searching the record from database based on id
 	@GetMapping("/searchbyid")
 	public String searchById() {
 		return "search-product";
@@ -88,34 +97,46 @@ public class ProductController {
 	@PostMapping("/searchbyid")
 	public String searchById(@RequestParam Long id, Model model)
 	{
-		ProductEntity product =  productService.searchById(id);
-		model.addAttribute("product", product);
+		ProductEntity product =  productService.searchById(id);  //sending the id to service layer and getting the id based details and storing into ProducEntity reference 
+		model.addAttribute("product", product);  //sending the ProductEntity reference to view(html) page
 		return "search-product";
 	}
 	
+	
+	
+	
+	//deleting the record in the database
 	@GetMapping("/delete/{id}")
 	public String deleteProductById(@PathVariable("id") Long id)
 	{
-		productService.deleteProductById(id);
+		productService.deleteProductById(id);   //sending the id to service layer
 		return "redirect:/getproducts";
 	}
 	
 	
+	
+	
+	//edit the details in the database
+	
 	@GetMapping("/edit/{id}")
 	public String showEditProductPage(@PathVariable("id") Long id,Model model) {
-	    ProductModel product = productService.editProductById(id); 
-	    model.addAttribute("product", product);
-	    model.addAttribute("id", id);
+	    ProductModel product = productService.editProductById(id);     //sending the id to service layer and getting the id based details and storing into ProducModel reference
+	    model.addAttribute("product", product);    //sending the ProductModel reference to view(html) page
+	    model.addAttribute("id", id);			  //sending the id to view(html) page
 	    return "edit-product";
 	}
 
 	@PostMapping("/editbyid/{id}")
 	public String editById(@PathVariable("id") Long id, ProductModel productModel)
 	{
-		productService.editById(id,productModel);
-		return "redirect:/getproducts";
+		productService.editById(id,productModel);     //sending the id and ProducModel reference to service layer
+		return "redirect:/getproducts";     //After editing and adding the details to database then the all records to be displayed
 	}
 	
+	
+	
+	
+	//getting the all links in one form
 	@GetMapping("/alllinks")
 	public String searchByLIinks() {
 		return "all-links";

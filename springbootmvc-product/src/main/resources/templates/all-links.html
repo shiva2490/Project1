@@ -10,36 +10,58 @@
         body {
             background-color: #f8f9fa;
             font-family: Arial, sans-serif;
+            padding: 20px;
         }
-        .nav-links {
-            margin-top: 50px;
+
+        .nav-container {
+            max-width: 600px;
+            margin: 100px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         .nav-links a {
             margin: 10px;
             padding: 15px 25px;
             font-size: 16px;
             text-decoration: none;
             color: white;
+            border-radius: 5px;
+            display: inline-block;
         }
-        .nav-links a:hover {
-            text-decoration: none;
-            opacity: 0.8;
-        }
+
         .btn-add {
             background-color: #28a745;
         }
+
+        .btn-add:hover {
+            background-color: #218838;
+        }
+
         .btn-get {
             background-color: #007bff;
         }
+
+        .btn-get:hover {
+            background-color: #0056b3;
+        }
+
         .btn-search {
             background-color: #ffc107;
             color: black;
         }
+
+        .btn-search:hover {
+            background-color: #e0a800;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="nav-container">
+        <h2 class="mb-4">Product Management</h2>
         <div class="nav-links">
             <a href="http://localhost:2490/productform" class="btn btn-add">Add Products</a>
             <a href="http://localhost:2490/getproducts" class="btn btn-get">Get All Products</a>

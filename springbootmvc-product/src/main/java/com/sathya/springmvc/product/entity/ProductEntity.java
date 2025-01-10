@@ -14,18 +14,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity 
-@Table(name = "Product")
+@Table(name = "Product")    //Giving custom table name to database table
 public class ProductEntity {
 	
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Id     //used to indicate primary key
+   @GeneratedValue(strategy = GenerationType.AUTO)   //used to set a default values to id column
 	private long id;
     private String name;
     private String brand;
     private String madeIn;
     private double price;
     private int quantity;
-    @Column(name = "discRt")
+    @Column(name = "discRt")       //Giving custom name to database table column
     private double discountRate;
     private double taxPrice;
     private double discountPrice;

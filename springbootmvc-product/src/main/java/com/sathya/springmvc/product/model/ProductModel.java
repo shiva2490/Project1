@@ -29,8 +29,6 @@ public class ProductModel {
 	private int quantity;
 	
 	@DecimalMax(value="100.0" , message="Discountrate cannot exceed 100")
-	private double discountRate;
-	
-	
+	private double discountRate;	
 }
 

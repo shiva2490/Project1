@@ -1,0 +1,33 @@
+#spring:
+#    application:
+#        name: springbootrest-security-sso1
+#    security:
+#        oauth2:
+#            client:
+#                registration:
+#                    facebook:
+#                        client-id: 942439171184785
+#                        client-secret: 6a54b00ccd03edef2bd11e367eaa8402
+#                    github:
+#                        client-id: Ov23litUtXCmHxir58Nz
+#                        client-secret: 4473f0f02e2c240f5e5b07f6b98676ad44521ed3
+#                    google:
+#                        client-id: 1002460090447-eebptc77l8hfe67urogbkrnii0jtqlp0.apps.googleusercontent.com
+#                        client-secret: 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
+
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1002460090447-eebptc77l8hfe67urogbkrnii0jtqlp0.apps.googleusercontent.com
+            client-secret: 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
+          github:
+            client-id: Ov23litUtXCmHxir58Nz
+            client-secret: 4473f0f02e2c240f5e5b07f6b98676ad44521ed3
+          facebook:
+            client-id: 942439171184785
+            client-secret: 6a54b00ccd03edef2bd11e367eaa8402
+            

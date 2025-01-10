@@ -1,5 +1,0 @@
-package com.sathya.springmvc.product.repository;
-
-public interface Repository {
-
-}

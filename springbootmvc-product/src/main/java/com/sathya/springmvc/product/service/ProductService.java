@@ -15,6 +15,9 @@ public class ProductService {
 	
 	@Autowired
 	ProductRepository productRepository;
+	
+	
+	//setting the extra details to model class for adding these to database
 	public void saveProductDetails(ProductModel productModel)
 	{
 		double stockValue;
@@ -26,12 +29,12 @@ public class ProductService {
 		double offerPrice;
 			offerPrice = productModel.getPrice() - discountPrice;
 			
-		double taxPrice = 0.18;
+		double taxPrice = 0.18;   //default value
 		
 		double finalPrice;
 			finalPrice = offerPrice + (taxPrice * offerPrice);
 			
-  //create the entity objects : read the data from model class set the data to entity class
+          //create the entity objects : read the data from model class set the data to entity class
 			
 			ProductEntity productEntity = new ProductEntity();
 			
@@ -47,12 +50,15 @@ public class ProductService {
 			productEntity.setFinalPrice(finalPrice);
 			productEntity.setStockValue(stockValue);
 			
-			productRepository.save(productEntity);
+			productRepository.save(productEntity);  //save the productEntity data into database
 	}
 			
+	
+	
+	       //Getting the All products details from database
 			public List<ProductEntity> getAllProducts()
 			{
-				List<ProductEntity> products = productRepository.findAll();
+				List<ProductEntity> products = productRepository.findAll(); 
 				return products;
 			}
 
@@ -69,12 +75,18 @@ public class ProductService {
 			}
 
 			
+			
+			
 			//Deleting the row By Id 
 			public void deleteProductById(Long id) {
 				
 				productRepository.deleteById(id);	
 			}
 
+			
+			
+			
+			//Get the details from database and set the details to ProductModel fields(variables) 
 			public ProductModel  editProductById(Long id) {
 				Optional<ProductEntity> optionalData= productRepository.findById(id);
 				if(optionalData.isPresent())
@@ -95,6 +107,9 @@ public class ProductService {
 				}
 			}
 
+			
+			
+			//After user edit the data that comes controller to service and set the ProductEntity fields(variables)
 			public void editById(Long id, ProductModel productModel) {
 				
 				Optional <ProductEntity> product = productRepository.findById(id);
